@@ -29,7 +29,7 @@ const Sidebar = ({
   ];
   return (
     <div className="h-screen w-20 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4">
-      <div className="flex flex-col h-full justify-center items-center">
+      <div className="flex flex-col h-full justify-center items-center ">
         <div className="mb-8">
           <img src={BrandLogo} alt="" />
         </div>

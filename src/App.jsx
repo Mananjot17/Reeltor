@@ -16,16 +16,21 @@ function App() {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
-  return (
-    <div className={`flex min-h-screen ${isDarkMode ? "dark" : ""}`}>
-      <Sidebar
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-      />
 
-      <main className="flex-1 bg-gray-100 dark:bg-gray-900">
+  return (
+    <div className={`flex h-screen ${isDarkMode ? "dark" : ""}`}>
+      {/* Sidebar (Fixed) */}
+      <div className="fixed h-full">
+        <Sidebar
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
+      </div>
+
+      {/* Main Content (Scrollable) */}
+      <main className="flex-1 ml-20 bg-gray-100 dark:bg-gray-900 overflow-y-auto h-screen">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
