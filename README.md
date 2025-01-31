@@ -25,7 +25,6 @@ This is a modern, responsive real estate dashboard web application built using *
 - **Clerk**: Authentication platform for handling user sign-in/sign-up.
 - **Framer Motion**: Animation library for smooth transitions and animations.
 - **Lucide React**: Library for vector icons like home, settings, etc.
-- **React Router**: (Optional for navigation) To handle routes and page navigation.
 
 ---
 
