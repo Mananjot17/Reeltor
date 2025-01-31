@@ -1,3 +1,7 @@
+# **Deployed Link**
+[https://reeltor-mauve.vercel.app/](https://reeltor-mauve.vercel.app/)
+
+
 # **Real Estate Dashboard**
 
 This is a modern, responsive real estate dashboard web application built using **React**, **Vite**, **Tailwind CSS**, **Clerk for Authentication**, and **Framer Motion** for animations. The dashboard provides a variety of features such as viewing properties, tracking sales, managing portfolios, and switching between different sections like Dashboard, Properties, Stats, Cart, Calendar, and Settings.
