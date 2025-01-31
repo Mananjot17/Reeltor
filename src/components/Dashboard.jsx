@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { DollarSign, Home, TrendingUp, Users } from "lucide-react";
+import { DollarSign, Home, TrendingUp, Users, Search } from "lucide-react";
 import StatCard from "./StatCard";
 import PortfolioCard from "./PortfolioCard";
 import NFTCard from "./NFTCard";
 import SalesOverview from "./SalesOverview";
+import { UserButton } from "@clerk/clerk-react";
 
 const data = [
   { name: "Jan", value: 400 },
@@ -59,50 +60,57 @@ const stats = [
 
 const Dashboard = () => {
   return (
-    <div className="p-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
-      <div className="lg:col-span-3">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-          Dashboard Overview
+    <div className="p-6">
+      {/* Header (Same as Properties) */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+          Dashboard
         </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <StatCard {...stat} />
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <div className="mb-6 overflow-x-auto whitespace-nowrap">
-          <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-            My Portfolio
-          </h3>
-          <div className="flex space-x-4">
-            {portfolio.map((item) => (
-              <PortfolioCard key={item.id} {...item} />
-            ))}
-          </div>
-        </div>
-
-        <SalesOverview data={data} />
+        <UserButton />
       </div>
 
-      <div className="lg:col-span-1">
-        <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-          NFTs Owned
-        </h3>
-        <div className="space-y-4">
-          {nftsOwned.map((nft) => (
-            <NFTCard key={nft.id} {...nft} />
-          ))}
+      {/* Dashboard Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="lg:col-span-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <StatCard {...stat} />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="mb-6 overflow-x-auto whitespace-nowrap">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+              My Portfolio
+            </h3>
+            <div className="flex space-x-4">
+              {portfolio.map((item) => (
+                <PortfolioCard key={item.id} {...item} />
+              ))}
+            </div>
+          </div>
+
+          <SalesOverview data={data} />
+        </div>
+
+        <div className="lg:col-span-1">
+          <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+            NFTs Owned
+          </h3>
+          <div className="space-y-4">
+            {nftsOwned.map((nft) => (
+              <NFTCard key={nft.id} {...nft} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
