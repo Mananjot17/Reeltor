@@ -1,5 +1,8 @@
 import { Search } from "lucide-react";
 import React, { useState } from "react";
+import { properties } from "../data/properties";
+import PropertyCard from "./PropertyCard";
+import { motion } from "framer-motion";
 
 const Properties = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,7 +10,7 @@ const Properties = () => {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white hidden sm:block">
           Properties
         </h2>
 
@@ -18,10 +21,27 @@ const Properties = () => {
             placeholder="Search properties..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="pl-10 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           />
         </div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {properties.map((property, index) => (
+          <motion.div
+            key={property.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <PropertyCard property={property} />
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 };
